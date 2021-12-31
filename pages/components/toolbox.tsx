@@ -13,14 +13,14 @@ const ToolBox: NextPage = () => {
         setGridLevel(multiplier)
     }, [0])
 
-    const levelChange = (event: Event) => {
+    const levelChange = (event: {target: HTMLInputElement}) => {
         const value = event.target.value
-        setGridLevel(value)
+        setGridLevel(parseInt(value))
         console.log(value)
         setMultiplier(value)
     }
 
-    const spawnTimeChange = (event: Event) => {
+    const spawnTimeChange = (event: {target: HTMLInputElement}) => {
         const value = event.target.value
         setSpawnTime(value)
     }
@@ -37,14 +37,14 @@ const ToolBox: NextPage = () => {
                 <div className={styles.contents}>
                     <div className={styles.eachContent}>
                         <h4>Difficulty: {gridLevel}</h4>
-                        <input value={gridLevel} type="range" min="1" max="2.5" step="0.1" onChange={() => levelChange(event)} />
+                        <input value={gridLevel} type="range" min="1" max="2.5" step="0.1" onChange={(e) => levelChange(e)} />
                         {/* <button onClick={() => setLevel(1)}>Easy</button>
                         <button onClick={() => setLevel(1.5)}>Medium</button>
                         <button onClick={() => setLevel(2)}>Hard</button> */}
                     </div>
                     <div className={styles.eachContent}>
                         <h4>Spawn Time</h4>
-                        <input value={spawnTime} type="range" min="2" max="10" step="2" onChange={() => spawnTimeChange(event)}></input>
+                        <input value={spawnTime} type="range" min="2" max="10" step="2" onChange={(e) => spawnTimeChange(e)}></input>
                     </div>
                     <div className={styles.eachContent}>
                         <h4>Life Time of Target</h4>

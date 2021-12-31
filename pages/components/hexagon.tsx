@@ -11,12 +11,12 @@ const Hexagon: NextPage<Props> = (props) => {
     const {multiplier, score, setScore} = useContext(GlobalContext)
     const { index } = props
 
-    const hexaClick = (e: Event) => {
+    const hexaClick = (e: {target: HTMLInputElement}) => {
         // if (currentHexa.length != 0) console.log(e.target in currentHexa)
         // console.log(e.target?.style.fill == "yellow")
         if (e.target?.style.fill == "rgb(252, 152, 22)"){
             setTimeout(() => {
-                e.target?.style.fill = "#111"
+                e.target.style.fill = "#111"
             }, 1000)
             e.target.style.fill = "limegreen";
             setScore(score + 1)
@@ -24,7 +24,7 @@ const Hexagon: NextPage<Props> = (props) => {
             // console.log("Press")
         }else{
             setTimeout(() => {
-                e.target?.style.fill = "#111"
+                e.target.style.fill = "#111"
             }, 1000)
             e.target.style.fill = "red";
             setScore(score - 1)
@@ -33,7 +33,7 @@ const Hexagon: NextPage<Props> = (props) => {
     // "50 1 93 25 93 75 50 99 8 75 8 25" => hexagon points
     return (
         <svg className={styles.svg} height={100/multiplier} width={100/multiplier}>
-            <polygon className={styles.poly} id={`hexa${index}`} onClick={() => hexaClick(event)}
+            <polygon className={styles.poly} id={`hexa${index}`} onClick={(e) => hexaClick(e)}
              points={
                  `${50/multiplier}
                     ${1/multiplier}
