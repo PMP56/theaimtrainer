@@ -1,0 +1,41 @@
+.svg{
+    cursor: url('../public/resources/cursor4.png') 5 5, auto;
+    /* transform: scale(0.5); */
+}
+
+.poly{
+    transition-duration: 0.3s;
+    /* animation: blink 2s infinite; */
+    /* fill: transparent; */
+    /* opacity: 0.8; */
+}
+
+.poly::after{
+    content: none;
+    background-color: red;
+}
+
+.poly-blink{
+    animation: blink 3s infinite;
+}
+
+@keyframes blink {
+    0% {
+        fill: limegreen;
+    }
+    20%{
+        fill: #111;
+    }
+    40%{
+        fill: limegreen;
+    }
+    60%{
+        fill: #111;
+    }
+    80%{
+        fill: limegreen;
+    }
+    100%{
+        fill: #111;
+    }
+}

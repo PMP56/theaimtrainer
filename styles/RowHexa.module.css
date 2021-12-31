@@ -1,0 +1,15 @@
+.row{
+    display: grid;
+    /* grid-template-columns: repeat(25, minmax(85px, 1fr)); */
+    overflow: hidden;
+    position: relative;
+}
+
+/* .row:nth-child(even){
+    display: grid;
+    gap: 0px;
+    position: relative;
+    top: 0px;
+    grid-template-columns: repeat(22, minmax(85px, 1fr));
+    overflow: hidden;
+} */
