@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styles from '../../styles/Hexagon.module.css';
 import { GlobalContext } from "../contexts/GlobalContext";
 
@@ -11,10 +11,11 @@ const Hexagon: NextPage<Props> = (props) => {
     const {multiplier, score, setScore} = useContext(GlobalContext)
     const { index } = props
 
-    const hexaClick = (e: {target: HTMLInputElement}) => {
+    const hexaClick = (e: any) => {
         // if (currentHexa.length != 0) console.log(e.target in currentHexa)
         // console.log(e.target?.style.fill == "yellow")
-        if (e.target?.style.fill == "rgb(252, 152, 22)"){
+        
+        if (e.target.style.fill == "rgb(252, 152, 22)"){
             setTimeout(() => {
                 e.target.style.fill = "#111"
             }, 1000)
