@@ -3,12 +3,19 @@ import React, { useContext } from "react";
 import styles from '../../styles/Hexagon.module.css';
 import { GlobalContext } from "../contexts/GlobalContext";
 
+
 interface Props{
     index: number | string
 }
 
 const Hexagon: NextPage<Props> = (props) => {
+    // const appContext = useContext(GlobalContext)
+
     const {multiplier, score, setScore} = useContext(GlobalContext)
+    // const multiplier = appContext?.multiplier
+    // const score = appContext?.score
+    // const setScore = appContext?.setScore
+
     const { index } = props
 
     const hexaClick = (e: any) => {

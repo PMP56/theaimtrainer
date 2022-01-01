@@ -15,7 +15,7 @@ const ToolBox: NextPage = () => {
 
     const levelChange = (event: {target: HTMLInputElement}) => {
         const value = event.target.value
-        setGridLevel(parseInt(value))
+        setGridLevel(parseFloat(value))
         console.log(value)
         setMultiplier(value)
     }
@@ -26,7 +26,6 @@ const ToolBox: NextPage = () => {
     }
 
     
-
     const openToolbox = () => {
         setOpen(!open)
     }
