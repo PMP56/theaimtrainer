@@ -1,5 +1,5 @@
 .svg{
-    cursor: url('../public/resources/cursor4.png') 5 5, auto;
+    cursor: url('../public/resources/cursor.png') 5 5, auto;
     /* transform: scale(0.5); */
 }
 
@@ -10,10 +10,7 @@
     /* opacity: 0.8; */
 }
 
-.poly::after{
-    content: none;
-    background-color: red;
-}
+
 
 .poly-blink{
     animation: blink 3s infinite;

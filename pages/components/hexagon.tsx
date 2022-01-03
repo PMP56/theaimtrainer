@@ -1,47 +1,57 @@
 import type { NextPage } from "next";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from '../../styles/Hexagon.module.css';
 import { GlobalContext } from "../contexts/GlobalContext";
 
 
 interface Props{
-    index: number | string
+    index: number
 }
 
 const Hexagon: NextPage<Props> = (props) => {
-    // const appContext = useContext(GlobalContext)
 
-    const {multiplier, score, setScore} = useContext(GlobalContext)
-    // const multiplier = appContext?.multiplier
-    // const score = appContext?.score
-    // const setScore = appContext?.setScore
-
+    const {multiplier, score, setScore, currentHexa, setCurrentHexa} = useContext(GlobalContext)
     const { index } = props
+    const [isHighlight, setIsHighlight] = useState(false)
+    const [isCorrect, setIsCorrect] = useState(0) //-1: incorrect (red), 0: neutral (orange), 1: correct (limegreen)
 
-    const hexaClick = (e: any) => {
-        // if (currentHexa.length != 0) console.log(e.target in currentHexa)
-        // console.log(e.target?.style.fill == "yellow")
-        
-        if (e.target.style.fill == "rgb(252, 152, 22)"){
-            setTimeout(() => {
-                e.target.style.fill = "#111"
-            }, 1000)
-            e.target.style.fill = "limegreen";
-            setScore(score + 1)
-            // e.target?.style.transitionDuration = "0s"
-            // console.log("Press")
-        }else{
-            setTimeout(() => {
-                e.target.style.fill = "#111"
-            }, 1000)
-            e.target.style.fill = "red";
-            setScore(score - 1)
+    const polygonRef = useRef<SVGPolygonElement>(null);
+
+    useEffect(() => {
+        // console.log("Index1", index)
+        if (currentHexa.includes(index) && !isHighlight){
+            setIsHighlight(true);     
         }
+    }, [currentHexa])
+
+    useEffect(() => {
+        if (isHighlight && currentHexa.includes(index)){
+            setTimeout(() => {
+                const newArray = currentHexa.filter((value) => {
+                    return value != index
+                })
+                setIsHighlight(false)
+            }, 2000)
+        }
+    }, [isHighlight])
+
+    const hexaClick = () => {
+        // console.log(index)
+        const newArray = currentHexa.filter((value) => {
+            return value != index
+        })
+        if (isHighlight){
+            setScore(score + 1)
+        }
+        setIsHighlight(false)
+        
+
     }
+
     // "50 1 93 25 93 75 50 99 8 75 8 25" => hexagon points
     return (
         <svg className={styles.svg} height={100/multiplier} width={100/multiplier}>
-            <polygon className={styles.poly} id={`hexa${index}`} onClick={(e) => hexaClick(e)}
+            <polygon ref={polygonRef} className={styles.poly} id={`hexa${index}`} onClick={() => hexaClick()}
              points={
                  `${50/multiplier}
                     ${1/multiplier}
@@ -57,7 +67,7 @@ const Hexagon: NextPage<Props> = (props) => {
                     ${25/multiplier}
                  `
              }
-              fill="#111">
+              fill={(!isHighlight)? "#111" : "rgb(252, 152, 22)"}>
                 
             </polygon>
        </svg>
