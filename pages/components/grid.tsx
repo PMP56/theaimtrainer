@@ -25,9 +25,11 @@ const Grid: NextPage = () => {
         setPause(false)
     }
 
-    document.body.onkeyup = function(e){
-        if(e.key == " "){
-            setPause(!pause)
+    if (typeof window === 'object') {
+        document.body.onkeyup = function(e){
+            if(e.key == " "){
+                setPause(!pause)
+            }
         }
     }
 
