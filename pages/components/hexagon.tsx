@@ -10,7 +10,7 @@ interface Props{
 
 const Hexagon: NextPage<Props> = (props) => {
 
-    const {multiplier, score, setScore, currentHexa, setCurrentHexa} = useContext(GlobalContext)
+    const {multiplier, score, setScore, currentHexa, setCurrentHexa, pause, setPause} = useContext(GlobalContext)
     const { index } = props
     const [isHighlight, setIsHighlight] = useState(false)
     const [isCorrect, setIsCorrect] = useState(0) //-1: incorrect (red), 0: neutral (orange), 1: correct (limegreen)
@@ -18,32 +18,36 @@ const Hexagon: NextPage<Props> = (props) => {
     const polygonRef = useRef<SVGPolygonElement>(null);
 
     useEffect(() => {
-        // console.log("Index1", index)
-        if (currentHexa.includes(index) && !isHighlight){
-            setIsHighlight(true);     
+        if (!pause){
+            if (currentHexa.includes(index) && !isHighlight){
+                setIsHighlight(true);     
+            }
         }
     }, [currentHexa])
 
     useEffect(() => {
         if (isHighlight && currentHexa.includes(index)){
-            setTimeout(() => {
-                const newArray = currentHexa.filter((value) => {
-                    return value != index
-                })
-                setIsHighlight(false)
-            }, 2000)
-        }
+            let x = setTimeout(() => {
+                    if (!pause){
+                        const newArray = currentHexa.filter((value) => {
+                            return value != index
+                        })
+                        setCurrentHexa(newArray)
+                        setIsHighlight(false)
+                    }
+                }, 2000)
+            }
     }, [isHighlight])
 
     const hexaClick = () => {
-        // console.log(index)
+        setIsHighlight(false)
         const newArray = currentHexa.filter((value) => {
             return value != index
         })
+        setCurrentHexa(newArray)
         if (isHighlight){
             setScore(score + 1)
         }
-        setIsHighlight(false)
         
 
     }
@@ -67,7 +71,7 @@ const Hexagon: NextPage<Props> = (props) => {
                     ${25/multiplier}
                  `
              }
-              fill={(!isHighlight)? "#111" : "rgb(252, 152, 22)"}>
+              fill={(!isHighlight)? "#111" : (isCorrect == 0)? "rgb(252, 152, 22)" : (isCorrect == -1)? "red" : "limegreen"}>
                 
             </polygon>
        </svg>

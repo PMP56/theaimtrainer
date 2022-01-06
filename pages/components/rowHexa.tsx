@@ -13,11 +13,6 @@ const RowHexa: NextPage<Props> = (props) => {
     const [col, row] = gridSize[multiplier]
     const list = Array.from({length: 49}, (_, index) => <Hexagon index={(index < col)? props.index * col + index : 10000} />)
 
-    useEffect(() => {
-
-    }, [0])
-
-
     const {index} = props
     
     

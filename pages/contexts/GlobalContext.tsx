@@ -18,6 +18,8 @@ interface Value{
     setLifeTime: Function,
     difficulty: number,
     setDifficulty: Function,
+    pause: boolean,
+    setPause: Function
 }
 
 const gridSize: {[key: number]: Array<number>} = {
@@ -53,6 +55,8 @@ const exampleValue: Value = {
     setLifeTime: () => {},
     difficulty: 1,
     setDifficulty: () => {},
+    pause: false,
+    setPause: () => {}
 }
 
 export const GlobalContext = createContext<Value>(exampleValue);
@@ -65,6 +69,7 @@ export const GlobalProvider:React.FC = ({children}) => {
     const [score, setScore] = useState(0);
 
     const [currentHexa, setCurrentHexa] = useState([])
+    const [pause, setPause] = useState(false)
     
 
     const globalValue: Value = {
@@ -81,6 +86,8 @@ export const GlobalProvider:React.FC = ({children}) => {
         setLifeTime: setLifeTime,
         difficulty: difficulty,
         setDifficulty: setDifficulty,
+        pause: pause,
+        setPause: setPause
     }
 
     return (
