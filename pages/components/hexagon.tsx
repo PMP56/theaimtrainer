@@ -10,7 +10,7 @@ interface Props{
 
 const Hexagon: NextPage<Props> = (props) => {
 
-    const {multiplier, score, setScore, currentHexa, setCurrentHexa, pause, setPause} = useContext(GlobalContext)
+    const {multiplier, score, setScore, currentHexa, setCurrentHexa, pause, setPause, lifeTime} = useContext(GlobalContext)
     const { index } = props
     const [isHighlight, setIsHighlight] = useState(false)
     const [isCorrect, setIsCorrect] = useState(0) //-1: incorrect (red), 0: neutral (orange), 1: correct (limegreen)
@@ -35,7 +35,7 @@ const Hexagon: NextPage<Props> = (props) => {
                         setCurrentHexa(newArray)
                         setIsHighlight(false)
                     }
-                }, 2000)
+                }, lifeTime)
             }
     }, [isHighlight])
 
@@ -48,7 +48,6 @@ const Hexagon: NextPage<Props> = (props) => {
         if (isHighlight){
             setScore(score + 1)
         }
-        
 
     }
 

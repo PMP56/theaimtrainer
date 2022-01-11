@@ -9,20 +9,20 @@ import RowHexa from "./rowHexa";
 Modal.setAppElement('body');
 
 const Grid: NextPage = () => {
-    const list = Array.from({length: 31}, (_, index) => <RowHexa index={index} />)
-    const { multiplier, gridSize, score, setScore, currentHexa, setCurrentHexa, pause, setPause } = useContext(GlobalContext)
+    const { multiplier, gridSize, score, setScore, currentHexa, setCurrentHexa, pause, setPause, spawnTime } = useContext(GlobalContext)
+    const [col, row] = gridSize[multiplier]
+
+    const list = Array.from({length: row + 2}, (_, index) => <RowHexa index={index} />)
 
     const getRandomHexa = (m: number, n: number): number => {
         return Math.floor(Math.random() * m*n);
     }
 
-    const [countDown, setCountDown] = useState(3);
-    const [isCountdownOpen, setIsCountdownOpen] = useState(true);
-    const [isPauseOpen, setIsPauseOpen] = useState(false);
+    const [gridSpawned, setGridSpawned] = useState(false);
 
     const closePauseModal = () => {
-        // setIsPauseOpen(false)
         setPause(false)
+        if(!gridSpawned) setGridSpawned(true)
     }
 
     if (typeof window === 'object') {
@@ -31,10 +31,15 @@ const Grid: NextPage = () => {
                 setPause(!pause)
             }
         }
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState == "hidden"){
+                setPause(true);
+            }
+        })
     }
 
     const spawnGrids = () => {
-        const [lower, upper] = gridSize[multiplier]
         
         // setTimeout(() => {
         //     const currentRandom = getRandomHexa(lower, upper)
@@ -53,38 +58,21 @@ const Grid: NextPage = () => {
 
         const x = setInterval(() => {
             if (!pause){
-                const currentRandom = getRandomHexa(lower, upper)
-                let currentRandomHexa: HTMLElement | null = document.getElementById(`hexa${currentRandom}`);
+                const currentRandom = getRandomHexa(col, row)
+                // let currentRandomHexa: HTMLElement | null = document.getElementById(`hexa${currentRandom}`);
                 
                 setCurrentHexa([currentRandom, ...currentHexa])
             }
-        }, 1000)
+        }, spawnTime)
     }
 
     useEffect(() => {
-        if (isCountdownOpen){
-            setTimeout(() => {
-                if (countDown > 1) {
-                    setCountDown(countDown - 1);
-                } else {
-                    setIsCountdownOpen(false)
-                    setCountDown(3)
-                    spawnGrids()
-                }
-            }, 1000)
-        }
-    }, [countDown])
+        spawnGrids()
+    }, [gridSpawned])
+
 
     return (
         <div className={styles.gridBody}>
-            <Modal
-                isOpen={isCountdownOpen}
-                contentLabel="Example Modal"
-                className={styles.pauseModal}
-                overlayClassName={styles.Overlay}
-            >
-                <h2 style={{fontSize: '128px', fontWeight: '400'}}>{countDown}</h2>
-            </Modal>
             <Modal
                 isOpen={pause}
                 onRequestClose={closePauseModal}
@@ -92,7 +80,14 @@ const Grid: NextPage = () => {
                 className={styles.pauseModal}
                 overlayClassName={styles.Overlay} 
             >
-                <svg xmlns="http://www.w3.org/2000/svg" height="120px" viewBox="0 0 24 24" width="120px" fill="white">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    height="120px" 
+                    viewBox="0 0 24 24" 
+                    width="120px" 
+                    fill="white"
+                    style={{cursor: 'pointer'}}
+                    onClick={closePauseModal}
+                >
                     <path d="M0 0h24v24H0V0z" fill="none"/>
                     <path d="M8 5v14l11-7L8 5z"/>
                 </svg>

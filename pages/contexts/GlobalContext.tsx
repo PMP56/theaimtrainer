@@ -49,7 +49,7 @@ const exampleValue: Value = {
     setCurrentHexa: () => {},
     score: 0,
     setScore: () => {},
-    spawnTime: 2000,
+    spawnTime: 1000,
     setSpawnTime: () => {},
     lifeTime: 2000,
     setLifeTime: () => {},
@@ -64,12 +64,12 @@ export const GlobalContext = createContext<Value>(exampleValue);
 export const GlobalProvider:React.FC = ({children}) => {
     const [multiplier, setMultiplier] = useState(1.4);
     const [difficulty, setDifficulty] = useState(1);
-    const [spawnTime, setSpawnTime] = useState(2000);
+    const [spawnTime, setSpawnTime] = useState(1000);
     const [lifeTime, setLifeTime] = useState(2000);
     const [score, setScore] = useState(0);
 
     const [currentHexa, setCurrentHexa] = useState([])
-    const [pause, setPause] = useState(false)
+    const [pause, setPause] = useState(true)
     
 
     const globalValue: Value = {

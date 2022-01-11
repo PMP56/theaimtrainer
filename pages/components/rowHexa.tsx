@@ -11,7 +11,7 @@ interface Props{
 const RowHexa: NextPage<Props> = (props) => {
     const {multiplier, gridSize} = useContext(GlobalContext);
     const [col, row] = gridSize[multiplier]
-    const list = Array.from({length: 49}, (_, index) => <Hexagon index={(index < col)? props.index * col + index : 10000} />)
+    const list = Array.from({length: col + 2}, (_, index) => <Hexagon index={(index < col)? props.index * col + index : 10000} />)
 
     const {index} = props
     

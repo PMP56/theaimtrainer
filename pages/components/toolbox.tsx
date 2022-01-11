@@ -21,8 +21,8 @@ const ToolBox: NextPage = () => {
     }
 
     const spawnTimeChange = (event: {target: HTMLInputElement}) => {
-        const value = event.target.value
-        setSpawnTime(value)
+        const value: number = parseFloat(event.target.value)
+        setSpawnTime((1 / value) * 1000)
     }
 
     
@@ -42,8 +42,8 @@ const ToolBox: NextPage = () => {
                         <button onClick={() => setLevel(2)}>Hard</button> */}
                     </div>
                     <div className={styles.eachContent}>
-                        <h4>Spawn Time</h4>
-                        <input value={spawnTime} type="range" min="2" max="10" step="2" onChange={(e) => spawnTimeChange(e)}></input>
+                        <h4>Spawn Speed: {1000 / spawnTime}X</h4>
+                        <input value={1000 / spawnTime} type="range" min="1" max="2" step="0.2" onChange={(e) => spawnTimeChange(e)}></input>
                     </div>
                     <div className={styles.eachContent}>
                         <h4>Life Time of Target</h4>
