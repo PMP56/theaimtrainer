@@ -29,6 +29,7 @@ const Grid: NextPage = () => {
         document.body.onkeyup = function(e){
             if(e.key == " "){
                 setPause(!pause)
+                if(!gridSpawned) setGridSpawned(true)
             }
         }
 

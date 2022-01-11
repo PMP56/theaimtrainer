@@ -30,13 +30,13 @@
   z-index: 11;
   width: 400px;
   height: 250px;
-  background: linear-gradient(to right, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background: linear-gradient(to left, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   margin: 10px 50px;
-  padding: 3px;
+  padding: 4px;
   background-size: 200% 100%;
   animation: bg 20s infinite;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 @keyframes bg {
@@ -64,7 +64,7 @@
   transition-duration: 0.2s;
   cursor: pointer;
   background-color: rgb(19, 19, 22);
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 .cardInner:hover{
@@ -77,15 +77,11 @@
   overflow: hidden;
 }
 
-#man1{
-  left: -30px;
-  bottom: 0px;
-  opacity: 0.3;
-}
-
-#man2{
-  right: -130px;
-  bottom: 0px;
-  overflow-y: hidden;
-  opacity: 0.3;
+.otherGames{
+  margin-top: 120px;
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }

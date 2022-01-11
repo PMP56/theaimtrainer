@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
@@ -30,6 +31,13 @@ const Home: NextPage = () => {
               </div>
             </Link>
           </div>
+        </div>
+        <div className={styles.otherGames}>
+          <Image src={'/resources/valorant.png'} alt='Valorant' width={146} height={100}/>
+          <Image src={'/resources/fortnite.png'} alt='Fortnite' width={158} height={50}/>
+          <Image src={'/resources/pubg.jpg'} alt='PUBG Desktop' width={100} height={100}/>
+          <Image src={'/resources/csgo.png'} alt='CS GO' width={80} height={90}/>
+          <Image src={'/resources/apex.png'} alt='Apex Legend' width={90} height={90}/>
         </div>
       </div>
 
