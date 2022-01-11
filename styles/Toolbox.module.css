@@ -1,10 +1,11 @@
 .toolbox{
     z-index: 100;
-    height: 50vh;
+    height: 65vh;
     border-radius: 0px 8px 8px 0px;
     /* border: 2px solid white; */
-    box-shadow: rgba(100, 100, 100, 0.25) 0px 14px 28px, rgba(100, 100, 100, 0.22) 0px 10px 10px;
-    background-color: rgb(52, 149, 240);
+    box-shadow: rgba(100, 100, 100, 0.25) 0px 8px 18px, rgba(100, 100, 100, 0.22) 0px 3px 05px;
+    /* background-color: rgb(52, 149, 240); */
+    background-color: rgb(22, 32, 41);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -13,19 +14,59 @@
     left: -3px;
     cursor: pointer;
     transition-duration: 0.3s;
+    width: 18vw;
 }
 
 .contents{
     display: flex;
-    flex-direction: row;
-    width: 80%;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.block{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
 }
 
 .eachContent{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.eachContent h4{
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 5px;
+}
+
+.range{
+    width: 100%;
+    outline: none;
+    height: 3px;
+    background-color: white;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 200px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.range::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
 }

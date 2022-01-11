@@ -94,6 +94,7 @@ const Grid: NextPage = () => {
                 </svg>
                 <p style={{fontSize: '13px'}}>(Press SPACE to continue)</p>
             </Modal>
+            
             {list.map((result, index) => <Fragment key={index}>{result}</Fragment>)}
         </div>
     )

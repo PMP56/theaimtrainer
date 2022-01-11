@@ -32,8 +32,10 @@ const Hexagon: NextPage<Props> = (props) => {
                         const newArray = currentHexa.filter((value) => {
                             return value != index
                         })
+                        // setScore(score - 1)
                         setCurrentHexa(newArray)
                         setIsHighlight(false)
+                        clearTimeout(x)
                     }
                 }, lifeTime)
             }
