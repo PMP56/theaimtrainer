@@ -6,6 +6,12 @@
   justify-content: center;
   text-align: center;
   font-size: 36px;
+  position: relative;
+  z-index: 10;
+}
+
+.header{
+  z-index: 100;
 }
 
 .header h3{
@@ -18,8 +24,8 @@
   margin: 0px 0px;
 }
 
-
 .body{
+  z-index: 100;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -27,15 +33,14 @@
 }
 
 .card{
-  z-index: 11;
-  width: 400px;
-  height: 250px;
+  z-index: 100;
+  width: 385px;
+  height: 245px;
   background: linear-gradient(to left, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   margin: 10px 50px;
-  padding: 4px;
+  padding: 2px;
   background-size: 200% 100%;
   animation: bg 20s infinite;
-  overflow: hidden;
   border-radius: 0px;
 }
 
@@ -63,12 +68,20 @@
   font-size: 24px;
   transition-duration: 0.2s;
   cursor: pointer;
-  background-color: rgb(19, 19, 22);
+  background-color: rgb(35, 35, 37);
   border-radius: 0px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardTitle{
+  position: absolute;
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .cardInner:hover{
-  background-color: rgb(25, 25, 30);
+  background-color: rgba(25, 25, 30, 0.4);
 }
 
 .imageContainer{
@@ -78,6 +91,7 @@
 }
 
 .otherGames{
+  z-index: 100;
   margin-top: 120px;
   width: 55%;
   display: flex;

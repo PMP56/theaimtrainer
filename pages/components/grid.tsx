@@ -12,7 +12,7 @@ const Grid: NextPage = () => {
     const { multiplier, gridSize, score, setScore, currentHexa, setCurrentHexa, pause, setPause, spawnTime } = useContext(GlobalContext)
     const [col, row] = gridSize[multiplier]
 
-    const list = Array.from({length: row + 2}, (_, index) => <RowHexa index={index} />)
+    const list = Array.from({length: row }, (_, index) => <RowHexa index={index} />)
 
     const getRandomHexa = (m: number, n: number): number => {
         return Math.floor(Math.random() * m*n);
