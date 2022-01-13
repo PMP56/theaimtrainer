@@ -16,6 +16,10 @@ class MyDocument extends Document {
             </script>
             <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="google-site-verification" content="bbGla_QVKIH7gJiZ3BfUL1Ew1bk2-Hv80fFPR65hUyI" />
+            <meta property="og:title" content="The Aim Trainer - Train and Improve your aim in FPS games" />
+            <meta property="og:description" content="The Aim Trainer is a free aim trainer helps you practice and improve your aim in any FPS game such as Valorant, Fortnite, Counter-Strike: GO, and Call of Duty. Practice and Test your Aim Performance Online. No Installation Required." />
+            <meta property="og:url" content="https://www.theaimtrainer.com/" />
+            <meta property="og:type" content="website" />
         </Head>
         <body>
           <Main />

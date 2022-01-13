@@ -33,7 +33,7 @@ const ToolBox: NextPage = () => {
 
     return (
         <div className={styles.toolbox} 
-            style={{left: (open)? '0px' : '-15.5vw', backgroundColor: (open)? 'rgb(22, 32, 41)' : 'rgb(52, 149, 240)'}}
+            style={{left: (open)? '0px' : '-14vw', backgroundColor: (open)? 'rgb(22, 32, 41)' : 'rgb(52, 149, 240)'}}
         >
             {(open)?   
                 <div className={styles.contents}>

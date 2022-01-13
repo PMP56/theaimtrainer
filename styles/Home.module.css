@@ -18,6 +18,7 @@
   margin-bottom: 50px;
   font-size: 20px;
   font-weight: 300;
+  letter-spacing: 0.75px;
 }
 
 .container h1{
@@ -34,14 +35,14 @@
 
 .card{
   z-index: 100;
-  width: 385px;
-  height: 245px;
+  width: 450px;
+  height: 300px;
   background: linear-gradient(to left, #EE7752, #E73C7E, #23A6D5, #23D5AB);
   margin: 10px 50px;
   padding: 2px;
   background-size: 200% 100%;
   animation: bg 20s infinite;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 
 @keyframes bg {
@@ -68,20 +69,25 @@
   font-size: 24px;
   transition-duration: 0.2s;
   cursor: pointer;
-  background-color: rgb(35, 35, 37);
-  border-radius: 0px;
+  background-color: rgb(30, 30, 31);
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
+  font-size: 30px;
 }
 
 .cardTitle{
   position: absolute;
-  font-size: 36px;
-  font-weight: 600;
+  font-weight: 400;
+  transition-duration: 0.2s;
 }
 
 .cardInner:hover{
-  background-color: rgba(25, 25, 30, 0.4);
+  background-color: rgba(25, 25, 30, 0.6);
+}
+
+.cardInner:hover .cardTitle{
+  transform: scale(1.5);
 }
 
 .imageContainer{

@@ -42,14 +42,17 @@ const Hexagon: NextPage<Props> = (props) => {
     }, [isHighlight])
 
     const hexaClick = () => {
-        setIsHighlight(false)
         const newArray = currentHexa.filter((value) => {
             return value != index
         })
         setCurrentHexa(newArray)
         if (isHighlight){
+            setIsCorrect(1)
             setScore(score + 1)
+        }else{
+            setIsCorrect(-1)
         }
+        setIsHighlight(false)
 
     }
 
@@ -72,7 +75,7 @@ const Hexagon: NextPage<Props> = (props) => {
                     ${25/multiplier}
                  `
              }
-              fill={(!isHighlight)? "#111" : (isCorrect == 0)? "rgb(252, 152, 22)" : (isCorrect == -1)? "red" : "limegreen"}>
+              fill={(!isHighlight)? "#111" : (isCorrect == 0)? "#f4b301" : (isCorrect == -1)? "red" : "limegreen"}>
                 
             </polygon>
        </svg>

@@ -30,14 +30,17 @@ const Home: NextPage = () => {
             <Link href={'/train'} passHref>
               <div className={styles.cardInner}>
                 <div className={styles.gridHolder}>
-                  <RowHexaMin index={0} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={1} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={2} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={3} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={4} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={5} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={6} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={7} count={10} left={1000} color='#111' multiplier={1.8} />
+                  <RowHexaMin index={0} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={1} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={2} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={3} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={4} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={5} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={6} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={7} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={8} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={9} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={10} count={10} left={1000} color='#131316' multiplier={1.8} />
                 </div>
                 <h3 className={styles.cardTitle}>Train</h3>
               </div>
@@ -47,14 +50,17 @@ const Home: NextPage = () => {
           <Link href={'/test'} passHref>
               <div className={styles.cardInner}>
                 <div className={styles.gridHolder}>
-                  <RowHexaMin index={0} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={1} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={2} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={3} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={4} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={5} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={6} count={10} left={1000} color='#111' multiplier={1.8} />
-                  <RowHexaMin index={7} count={10} left={1000} color='#111' multiplier={1.8} />
+                  <RowHexaMin index={0} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={1} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={2} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={3} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={4} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={5} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={6} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={7} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={8} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={9} count={10} left={1000} color='#131316' multiplier={1.8} />
+                  <RowHexaMin index={10} count={10} left={1000} color='#131316' multiplier={1.8} />
                 </div>
                 <h3 className={styles.cardTitle}>Test</h3>
               </div>
