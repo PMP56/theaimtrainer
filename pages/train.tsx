@@ -5,12 +5,12 @@ import Result from "./components/result";
 import { GlobalContext, GlobalProvider } from "./contexts/GlobalContext";
 
 import styles from "../styles/Train.module.css";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Head from "next/head";
 
 const Train: NextPage = () => {
     // const list = Array(20).fill(<RowHexa />)
-    
+
     return (
         <GlobalProvider>
             <Head>

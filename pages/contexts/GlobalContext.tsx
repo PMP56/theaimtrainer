@@ -19,7 +19,9 @@ interface Value{
     difficulty: number,
     setDifficulty: Function,
     pause: boolean,
-    setPause: Function
+    setPause: Function,
+    fullScreen: boolean,
+    setFullScreen: Function
 }
 
 const gridSize: {[key: number]: Array<number>} = {
@@ -42,7 +44,7 @@ const gridSize: {[key: number]: Array<number>} = {
 }
 
 const exampleValue: Value = {
-    multiplier: 1.4,
+    multiplier: 1.5,
     setMultiplier: () => {},
     gridSize: gridSize,
     currentHexa: [],
@@ -56,13 +58,15 @@ const exampleValue: Value = {
     difficulty: 1,
     setDifficulty: () => {},
     pause: false,
-    setPause: () => {}
+    setPause: () => {},
+    fullScreen: false,
+    setFullScreen: () => {}
 }
 
 export const GlobalContext = createContext<Value>(exampleValue);
 
 export const GlobalProvider:React.FC = ({children}) => {
-    const [multiplier, setMultiplier] = useState(1.4);
+    const [multiplier, setMultiplier] = useState(1.5);
     const [difficulty, setDifficulty] = useState(1);
     const [spawnTime, setSpawnTime] = useState(1000);
     const [lifeTime, setLifeTime] = useState(2000);
@@ -70,7 +74,7 @@ export const GlobalProvider:React.FC = ({children}) => {
 
     const [currentHexa, setCurrentHexa] = useState([])
     const [pause, setPause] = useState(true)
-    
+    const [fullscreen, setFullScreen] = useState(false)
 
     const globalValue: Value = {
         multiplier: multiplier,
@@ -87,7 +91,9 @@ export const GlobalProvider:React.FC = ({children}) => {
         difficulty: difficulty,
         setDifficulty: setDifficulty,
         pause: pause,
-        setPause: setPause
+        setPause: setPause,
+        fullScreen: fullscreen,
+        setFullScreen: setFullScreen
     }
 
     return (

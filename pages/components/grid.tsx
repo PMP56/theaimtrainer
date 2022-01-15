@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 import Modal from 'react-modal';
 
 import styles from "../../styles/Grid.module.css";
@@ -9,21 +9,32 @@ import RowHexa from "./rowHexa";
 Modal.setAppElement('body');
 
 const Grid: NextPage = () => {
-    const { multiplier, gridSize, score, setScore, currentHexa, setCurrentHexa, pause, setPause, spawnTime } = useContext(GlobalContext)
+    const { multiplier, gridSize, score, setScore, currentHexa, setCurrentHexa, pause, setPause, spawnTime, fullScreen, setFullScreen} = useContext(GlobalContext)
     const [col, row] = gridSize[multiplier]
+    
+    const gridRef = useRef<HTMLDivElement>(null)
+    const audioRef = useRef<HTMLAudioElement>(null)
 
-    const list = Array.from({length: row }, (_, index) => <RowHexa index={index} />)
+    const playAudio = () => {
+        if (audioRef.current){
+            audioRef.current.volume = 0.5;
+            audioRef.current.play()
+        }
+    }
+
+    const list = Array.from({length: row }, (_, index) => <RowHexa playAudio = {playAudio} index={index} />)
+    const [gridSpawned, setGridSpawned] = useState(false);
+
 
     const getRandomHexa = (m: number, n: number): number => {
         return Math.floor(Math.random() * m*n);
     }
 
-    const [gridSpawned, setGridSpawned] = useState(false);
-
     const closePauseModal = () => {
         setPause(false)
         if(!gridSpawned) setGridSpawned(true)
     }
+
 
     if (typeof window === 'object') {
         document.body.onkeyup = function(e){
@@ -40,23 +51,25 @@ const Grid: NextPage = () => {
         })
     }
 
-    const spawnGrids = () => {
-        
-        // setTimeout(() => {
-        //     const currentRandom = getRandomHexa(lower, upper)
-        //     // let currentRandomHexa: HTMLElement | null = document.getElementById(`hexa${currentRandom}`);
-        //     setCurrentHexa([currentRandom, ...currentHexa])
-        //     // console.log(currentHexa)
-        //     // if (currentRandomHexa) {
-        //     //     currentRandomHexa.style.fill = "yellow"
-        //     //     // console.log(currentHexa)
-        //     // };
-        //     // setTimeout(() => {
-        //     //     setCurrentHexa(currentHexa.shift())
-                   
-        //     // }, 1500)
-        // }, 1000)
+    // useEffect(() => {
+    //     if (gridRef.current){
+    //         if (gridRef.current.requestFullscreen) {
+    //             gridRef.current.requestFullscreen();
+    //             setFullScreen(true)
+    //         } 
+    //         // if (document.exitFullscreen) {
+    //         //     document.exitFullscreen();
+    //         //     setFullScreen(false)
+    //         // }
+    //         // else if (gridRef.current.webkitRequestFullscreen) { /* Safari */
+    //         // gridRef.current.webkitRequestFullscreen();
+    //         // } else if (gridRef.current.msRequestFullscreen) { /* IE11 */
+    //         // gridRef.current.msRequestFullscreen();
+    //         // }
+    //     }
+    // }, [fullScreen])
 
+    const spawnGrids = () => {
         const x = setInterval(() => {
             if (!pause){
                 const currentRandom = getRandomHexa(col, row)
@@ -73,7 +86,7 @@ const Grid: NextPage = () => {
 
 
     return (
-        <div className={styles.gridBody}>
+        <div ref={gridRef} className={styles.gridBody}>
             <Modal
                 isOpen={pause}
                 onRequestClose={closePauseModal}
@@ -94,7 +107,7 @@ const Grid: NextPage = () => {
                 </svg>
                 <p style={{fontSize: '13px'}}>(Press SPACE to continue)</p>
             </Modal>
-            
+            <audio ref={audioRef} id='audio' src='/resources/shoot.mp3' preload="auto" />
             {list.map((result, index) => <Fragment key={index}>{result}</Fragment>)}
         </div>
     )

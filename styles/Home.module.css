@@ -78,16 +78,17 @@
 
 .cardTitle{
   position: absolute;
-  font-weight: 400;
+  font-weight: 600;
   transition-duration: 0.2s;
 }
 
 .cardInner:hover{
-  background-color: rgba(25, 25, 30, 0.6);
+  background-color: rgba(25, 25, 30, 0.5);
 }
 
 .cardInner:hover .cardTitle{
-  transform: scale(1.5);
+  transform: scale(1.4);
+  color: rgb(243, 227, 85);
 }
 
 .imageContainer{
@@ -104,4 +105,32 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+@media (max-width: 1440px){
+  .container{
+    transform: scale(0.8);
+  }
+
+}
+
+@media (max-width: 900px){
+  .container{
+    transform: scale(0.6);
+  }
+  .otherGames{
+    width: 120%;
+  }
+}
+
+@media (max-width: 600px){
+  .container{
+    transform: scale(0.7);
+  }
+  .body{
+    flex-direction: column;
+  }
+  .otherGames{
+    width: 120%;
+  }
 }

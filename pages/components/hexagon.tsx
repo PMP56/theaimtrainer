@@ -5,7 +5,8 @@ import { GlobalContext } from "../contexts/GlobalContext";
 
 
 interface Props{
-    index: number
+    index: number,
+    playAudio: Function
 }
 
 const Hexagon: NextPage<Props> = (props) => {
@@ -16,6 +17,7 @@ const Hexagon: NextPage<Props> = (props) => {
     const [isCorrect, setIsCorrect] = useState(0) //-1: incorrect (red), 0: neutral (orange), 1: correct (limegreen)
 
     const polygonRef = useRef<SVGPolygonElement>(null);
+    const playAudio = props.playAudio
 
     useEffect(() => {
         if (!pause){
@@ -35,10 +37,16 @@ const Hexagon: NextPage<Props> = (props) => {
                         // setScore(score - 1)
                         setCurrentHexa(newArray)
                         setIsHighlight(false)
+                        setIsCorrect(0)
                         clearTimeout(x)
                     }
-                }, lifeTime)
-            }
+            }, lifeTime)
+        }
+        // if (!isHighlight && isCorrect == -1){
+        //     let x = setTimeout(() => {
+        //         setIsCorrect(0)
+        //     }, 1000)
+        // }
     }, [isHighlight])
 
     const hexaClick = () => {
@@ -49,8 +57,10 @@ const Hexagon: NextPage<Props> = (props) => {
         if (isHighlight){
             setIsCorrect(1)
             setScore(score + 1)
+            playAudio()
         }else{
             setIsCorrect(-1)
+            // console.log("Wrong")
         }
         setIsHighlight(false)
 

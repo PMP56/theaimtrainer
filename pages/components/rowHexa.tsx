@@ -5,16 +5,17 @@ import { GlobalContext } from "../contexts/GlobalContext";
 import Hexagon from "./hexagon";
 
 interface Props{
-    index: number
+    index: number,
+    playAudio: Function
 }
 
 const RowHexa: NextPage<Props> = (props) => {
     const {multiplier, gridSize} = useContext(GlobalContext);
     const [col, row] = gridSize[multiplier]
-    const list = Array.from({length: col }, (_, index) => <Hexagon index={(index < col)? props.index * col + index : 10000} />)
+    
+    const list = Array.from({length: col }, (_, index) => <Hexagon playAudio = {props.playAudio} index={(index < col)? props.index * col + index : 10000} />)
 
     const {index} = props
-    
     
     return(
         <div className={styles.row} style={{

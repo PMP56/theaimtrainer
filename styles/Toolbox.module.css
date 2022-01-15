@@ -11,7 +11,6 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: -3px;
     cursor: pointer;
     transition-duration: 0.2s;
     width: 16vw;

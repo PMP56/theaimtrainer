@@ -42,7 +42,7 @@ const Home: NextPage = () => {
                   <RowHexaMin index={9} count={10} left={1000} color='#131316' multiplier={1.8} />
                   <RowHexaMin index={10} count={10} left={1000} color='#131316' multiplier={1.8} />
                 </div>
-                <h3 className={styles.cardTitle}>Train</h3>
+                <h3 className={styles.cardTitle}>TRAIN</h3>
               </div>
             </Link>
           </div>
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
                   <RowHexaMin index={9} count={10} left={1000} color='#131316' multiplier={1.8} />
                   <RowHexaMin index={10} count={10} left={1000} color='#131316' multiplier={1.8} />
                 </div>
-                <h3 className={styles.cardTitle}>Test</h3>
+                <h3 className={styles.cardTitle}>TEST</h3>
               </div>
             </Link>
           </div>
