@@ -4,17 +4,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CSSProperties, Fragment } from 'react'
 import styles from '../styles/Home.module.css'
+import Logo from './components/logo'
 import MovingGradient from './components/movingGradient'
 import RowHexa from './components/rowHexa'
 import RowHexaMin from './components/rowHexaMin'
 
 const Home: NextPage = () => {
   const cardGrid = Array.from({length: 11 }, (_, index) => <RowHexaMin index={index} count={10} left={1000} color='#131316' multiplier={1.8} />)
-  const articleGrid = Array.from({length: 15 }, (_, index) => <RowHexaMin index={index} count={40} left={40} color='#131316' multiplier={1.5} />)
-  const articleGrid2 = Array.from({length: 15 }, (_, index) => <RowHexaMin index={index} count={40} left={40} color='#f1b614' multiplier={1.5} />)
+  const articleGrid = Array.from({length: 15 }, (_, index) => <RowHexaMin index={index} count={31} left={550} color='#131316' multiplier={1.5} />)
+  const articleGrid2 = Array.from({length: 15 }, (_, index) => <RowHexaMin index={index} count={31} left={550} color='#f1b614' multiplier={1.5} />)
   
   const movingGradients = Array.from({length: 15 }, (_, index) => <MovingGradient direction={'x'} top={index * 52 + 30} left={0} />)
-  const movingGradientsVerical = Array.from({length: 40 }, (_, index) => <MovingGradient direction={'y'} top={0} left={index * 90 - 2} />)
+  const movingGradientsVerical = Array.from({length: 31 }, (_, index) => <MovingGradient direction={'y'} top={0} left={index * 90 - 2} />)
   
   return (
     <main>
@@ -25,8 +26,14 @@ const Home: NextPage = () => {
         <meta key="keywords" name="keywords" content="the aim trainer, aim trainer, FPS trainer, FPS, improve aim, boost aim, practice targets, practice aiming, FPS games" />
         <meta name='robots' content='all' />  
         <link rel="canonical" href="https://www.theaimtrainer.com" key="canonical" />
-
+        <link rel="icon" href="/logo.svg" />
       </Head>
+      {/* <div className={styles.head}>
+        <div className={styles.headerBody}>
+          <Logo />
+          <h1 style={{marginLeft: '20px', fontWeight: 300}}>The Aim Trainer</h1>
+        </div>
+      </div> */}
       <div className={styles.container}>
         <header className={styles.header}>
           <h1>The Aim Trainer</h1>
@@ -109,11 +116,14 @@ const Home: NextPage = () => {
       </div>
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
-          <h1>
-            <Link href={'/'}>
-                The Aim Trainer
-            </Link>
+          <div style={{display: 'flex'}}>
+            <Logo />
+            <h1 style={{marginLeft: '10px'}}>
+              <Link href={'/'}>
+                  The Aim Trainer
+              </Link>
             </h1>
+          </div>
           <p>© Copyright 2022</p>
         </div>
       </footer>

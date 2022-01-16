@@ -1,3 +1,22 @@
+.head{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.headerBody{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  height: 100px;
+}
+
 .container {
   height: 100vh;
   display: flex;

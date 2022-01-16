@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { FC, useContext, useEffect, useRef, useState } from "react";
 import styles from '../../styles/Hexagon.module.css';
 import { GlobalContext } from "../contexts/GlobalContext";
 
@@ -9,7 +9,7 @@ interface Props{
     playAudio: Function
 }
 
-const Hexagon: NextPage<Props> = (props) => {
+const Hexagon: FC<Props> = (props) => {
 
     const {multiplier, score, setScore, currentHexa, setCurrentHexa, pause, setPause, lifeTime} = useContext(GlobalContext)
     const { index } = props
